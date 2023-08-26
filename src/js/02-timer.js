@@ -27,9 +27,10 @@
         // window.alert("Please choose a date in the future");
         Notiflix.Notify.failure("Please choose a date in the future");
       } else {
-        Notiflix.Notify.success("The selected date is later than current date");
+
         buttonStart.disabled = false;
         selectedDate = selectedDates[0];
+        Notiflix.Notify.success("The selected date is later than current one");
       }
     },
   };
@@ -77,7 +78,7 @@
 
       timerId = setInterval(() => {
         setTime();
-        if (Object.values(leftTime)) {
+        if (Object.values(leftTime).every()) {
           clearInterval(timerId);
         }
       }, 1000);
