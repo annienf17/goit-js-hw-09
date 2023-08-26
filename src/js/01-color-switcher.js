@@ -6,7 +6,7 @@ const getRandomHexColor = () => {
   // print randomly selected color in place "-"
       printColor.innerHTML = document.body.style.background;  
   }
-  
+  let timerId = 0;
   const buttonStart = document.querySelector("[data-start]");
   const buttonStop = document.querySelector("[data-stop]");
   
