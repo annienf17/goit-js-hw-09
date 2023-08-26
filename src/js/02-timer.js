@@ -26,8 +26,8 @@
       if (selectedDates[0] < new Date()) {
         // window.alert("Please choose a date in the future");
         Notiflix.Notify.failure("Please choose a date in the future");
-      } else {
 
+      } else {
         buttonStart.disabled = false;
         selectedDate = selectedDates[0];
         Notiflix.Notify.success("The selected date is later than current one");
@@ -75,7 +75,6 @@
     buttonStart.addEventListener('click', () => {
 // call function to count left time
       setTime();
-
       timerId = setInterval(() => {
         setTime();
         if (Object.values(leftTime).every()) {
