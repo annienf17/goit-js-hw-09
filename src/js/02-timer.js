@@ -1,4 +1,5 @@
   import flatpickr from "flatpickr";
+  import Notiflix from 'notiflix';
   import "flatpickr/dist/flatpickr.min.css";
 
   const date = new Date();
@@ -23,9 +24,10 @@
     onClose(selectedDates) {
 
       if (selectedDates[0] < new Date()) {
-        window.alert("Please choose a date in the future");
+        // window.alert("Please choose a date in the future");
+        Notiflix.Notify.failure("Please choose a date in the future");
       } else {
-
+        Notiflix.Notify.success("The selected date is later than current date");
         buttonStart.disabled = false;
         selectedDate = selectedDates[0];
       }
