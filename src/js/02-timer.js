@@ -72,7 +72,7 @@
       seconds.innerHTML = addLeadingZero(leftTime.seconds);
     }
 
-    buttonStart.addEventListener('click', () => {
+    buttonStart.addEventListener('click', (e) => {
 // call function to count left time
       setTime();
       timerId = setInterval(() => {
@@ -82,4 +82,6 @@
         }
       }, 1000);
       buttonStart.disabled = true;
+      e.currentTarget.reset();
     });
+   
