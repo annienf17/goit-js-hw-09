@@ -1,7 +1,8 @@
+"use strict";
 import Notiflix from 'notiflix';
 
 // form handling
-form = document.querySelector('.form');
+const form = document.querySelector('.form');
 delayInput = document.querySelector('input[name="delay"]');
 stepInput = document.querySelector('input[name="step"]');
 amountInput = document.querySelector('input[name="amount"]');
