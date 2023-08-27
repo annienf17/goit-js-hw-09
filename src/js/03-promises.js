@@ -3,9 +3,9 @@ import Notiflix from 'notiflix';
 
 // form handling
 const form = document.querySelector('.form');
-delayInput = document.querySelector('input[name="delay"]');
-stepInput = document.querySelector('input[name="step"]');
-amountInput = document.querySelector('input[name="amount"]');
+const delayInput = document.querySelector('input[name="delay"]');
+const stepInput = document.querySelector('input[name="step"]');
+const amountInput = document.querySelector('input[name="amount"]');
 
 form.addEventListener('submit', submitForm);
 
