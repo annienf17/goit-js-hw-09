@@ -1,11 +1,10 @@
   import flatpickr from "flatpickr";
   import Notiflix from 'notiflix';
   import "flatpickr/dist/flatpickr.min.css";
-
-  const date = new Date();
-  console.log("Date: ", date);
+  import 'notiflix/dist/notiflix-3.2.6.min.css';
 
   const buttonStart = document.querySelector("[data-start]");
+  const datetimePicker = document.querySelector("#datetime-picker");
 
   const days = document.querySelector("[data-days]");
   const hours = document.querySelector("[data-hours]");
@@ -15,6 +14,7 @@
   let selectedDate;
   let leftTime;
   let timerId = 0;
+  
 
   const options = {
     enableTime: true,
@@ -26,7 +26,7 @@
       if (selectedDates[0] < new Date()) {
         // window.alert("Please choose a date in the future");
         Notiflix.Notify.failure("Please choose a date in the future");
-
+        
       } else {
         buttonStart.disabled = false;
         selectedDate = selectedDates[0];
@@ -36,7 +36,8 @@
   };
 
   buttonStart.disabled = true;
-  flatpickr("#datetime-picker", options);
+  flatpickr(datetimePicker, options);
+  
 
   // function counts remaining time
   function convertMs(ms) {
@@ -72,16 +73,20 @@
       seconds.innerHTML = addLeadingZero(leftTime.seconds);
     }
 
-    buttonStart.addEventListener('click', (e) => {
+    buttonStart.addEventListener('click', () => {
 // call function to count left time
       setTime();
       timerId = setInterval(() => {
         setTime();
-        if (Object.values(leftTime).every()) {
+        if (leftTime < 0) {
           clearInterval(timerId);
+          timerId.reset()
         }
       }, 1000);
       buttonStart.disabled = true;
-      e.currentTarget.reset();
+      
     });
    
+
+
+    
