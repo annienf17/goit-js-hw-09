@@ -3,9 +3,10 @@ import Notiflix from 'notiflix';
 import 'flatpickr/dist/flatpickr.min.css';
 import 'notiflix/dist/notiflix-3.2.6.min.css';
 
+// form handling
 const buttonStart = document.querySelector('[data-start]');
 const datetimePicker = document.querySelector('#datetime-picker');
-
+// inputs 
 const inputDays = document.querySelector('[data-days]');
 const inputHours = document.querySelector('[data-hours]');
 const inputMinutes = document.querySelector('[data-minutes]');
@@ -35,6 +36,8 @@ const options = {
 };
 
 buttonStart.disabled = true;
+
+// biblioteka Flatpickr, która jest biblioteką JavaScript do wybierania dat i godzin.
 flatpickr(datetimePicker, options);
 
 // function counts remaining time
@@ -67,7 +70,14 @@ buttonStart.addEventListener('click', () => {
   timerId = setInterval(() => {
         leftTime = selectedDate - Date.now();
         console.log(`leftTime = ${leftTime}`);
+        
+  /* funkcja `convertMs()` przekształca `leftTime` (w milisekundach) na dni, godziny, minuty i sekundy, 
+  a następnie zwraca obiekt z tymi wartościami. Kod wykorzystuje destrukturyzację obiektu 
+  do przypisania wartości tych właściwości do osobnych zmiennych (`days`, `hours`, `minutes` i `seconds`). 
+  Na końcu wartości tych zmiennych są wypisywane w konsoli. */
         const { days, hours, minutes, seconds } = convertMs(leftTime);
+
+  //funkcja, która przyjmuje liczbę dni jako argument, a następnie dodaje zero na początku, jeśli liczba dni jest mniejsza niż 10.      
         inputDays.innerHTML = addLeadingZero(days);
         console.log(` days innerHTML ${inputDays.innerHTML}`)
         inputHours.innerHTML = addLeadingZero(hours);
@@ -81,3 +91,4 @@ buttonStart.addEventListener('click', () => {
 
   buttonStart.disabled = true;
 });
+
