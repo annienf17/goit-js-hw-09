@@ -3,8 +3,6 @@ const getRandomHexColor = () => {
      `#${Math.floor(Math.random() * 16777215)
       .toString(16)
       }`;
-  // print randomly selected color in place "-"
-      printColor.innerHTML = document.body.style.background;  
   }
   
   let timerId = 0;
