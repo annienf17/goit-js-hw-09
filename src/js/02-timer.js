@@ -12,8 +12,9 @@
   const seconds = document.querySelector("[data-seconds]");
 
   let selectedDate;
-  let leftTime;
-  let timerId = 0;
+  let leftTime = 0;
+  let timerId;
+  const mlsPerSecond = 1000;
   
 
   const options = {
@@ -78,13 +79,14 @@
       setTime();
       timerId = setInterval(() => {
         setTime();
-        if (leftTime < 0) {
+        if (leftTime <= mlsPerSecond) {
           clearInterval(timerId);
           timerId.reset()
         }
-      }, 1000);
+      }, mlsPerSecond);
+
       buttonStart.disabled = true;
-      
+      console.log(leftTime);
     });
    
 
