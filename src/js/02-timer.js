@@ -11,7 +11,7 @@
   const minutes = document.querySelector("[data-minutes]");
   const seconds = document.querySelector("[data-seconds]");
 
-  let selectedDate;
+  let selectedDate = new Date(datetimePicker.value);
   let leftTime = 0;
   let timerId;
   const mlsPerSecond = 1000;
@@ -30,7 +30,7 @@
         
       } else {
         buttonStart.disabled = false;
-        selectedDate = selectedDates[0];
+        selectedDate = selectedDates[0].getTime();
         Notiflix.Notify.success("The selected date is later than current one");
       }
     },
@@ -66,8 +66,7 @@
     }
 
   function setTime() {
-      const defaultDate = new Date();
-      leftTime = convertMs(selectedDate - defaultDate);
+      leftTime = convertMs(selectedDate - Date.now());
       days.innerHTML = addLeadingZero(leftTime.days);
       hours.innerHTML = addLeadingZero(leftTime.hours);
       minutes.innerHTML = addLeadingZero(leftTime.minutes);
@@ -86,9 +85,7 @@
       }, mlsPerSecond);
 
       buttonStart.disabled = true;
-      console.log(leftTime);
+      
     });
    
-
-
     
